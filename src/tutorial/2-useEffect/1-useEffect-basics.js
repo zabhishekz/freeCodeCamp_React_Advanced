@@ -5,15 +5,22 @@ import React, { useState, useEffect } from "react";
 const UseEffectBasics = () => {
   const [value, setValue] = useState(0);
 
-  //You cant place conditionals on hooks
-  //but you can place a conditional within callback funtion of hook
+  //by default, if you have no dependancy array => the useEffect will re-run every time the component gets re-rendered
   useEffect(() => {
-    console.log("call useEffect");
-    if (value > 3) {
-      document.title = `New Messages(${value})`;
-    }
+    console.log("call useEffect 1");
   });
 
+  //if you set up the dependancy array as empty array => the useEffect will run only once the component is rendered
+  useEffect(() => {
+    console.log("call useEffect 2");
+  }, []);
+
+  //if you add different values in the dependancy array => the useEffect will run each time that value is changed
+  useEffect(() => {
+    console.log("call useEffect 3");
+  }, [value]);
+
+  // Also -> You can setup many useEffect, all above 3 will work
   console.log("render component");
   return (
     <>
