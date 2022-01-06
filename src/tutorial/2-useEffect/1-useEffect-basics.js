@@ -4,10 +4,16 @@ import React, { useState, useEffect } from "react";
 // second parameter
 const UseEffectBasics = () => {
   const [value, setValue] = useState(0);
+
+  //You cant place conditionals on hooks
+  //but you can place a conditional within callback funtion of hook
   useEffect(() => {
     console.log("call useEffect");
-    document.title = `New Messages(${value})`;
+    if (value > 3) {
+      document.title = `New Messages(${value})`;
+    }
   });
+
   console.log("render component");
   return (
     <>
